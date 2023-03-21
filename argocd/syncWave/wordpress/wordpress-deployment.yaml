@@ -90,7 +90,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:latest
+        image: arm64v8/mysql:latest
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
