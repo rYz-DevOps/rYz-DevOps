@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project:
+  project: default
   source:
     repoURL: https://github.com/rYz-DevOps/rYz-DevOps.git
     targetRevision: argocd
