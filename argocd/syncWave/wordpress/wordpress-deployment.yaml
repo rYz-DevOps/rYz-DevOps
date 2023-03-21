@@ -60,10 +60,7 @@ spec:
         - name: WORDPRESS_DB_HOST
           value: mysql
         - name: WORDPRESS_DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysql
-              key: username
+          value: root
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
