@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: child-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: test-dev
+  source:
+    repoURL: https://github.com/stormxio/test-repo.git
+    targetRevision: argocd-test
+    directory:
+      recurse: true
+    path: argocd/deployments/nginx/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nginx
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=true
+  syncPeriod: 1m
+  orphanedResources: ignore
+  healthCheck:
+    readiness:
+      path: /health
+      initialDelaySeconds: 10
+      timeoutSeconds: 5
+    liveness:
+      path: /health
+      initialDelaySeconds: 20
+      timeoutSeconds: 5
