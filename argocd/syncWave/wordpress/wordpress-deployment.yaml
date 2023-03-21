@@ -71,6 +71,9 @@ spec:
               key: password
         - name: WORDPRESS_DB_NAME
           value: wordpress
+      imagePullSecrets:
+        - name: mysql
+         
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -108,6 +111,8 @@ spec:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+      imagePullSecrets:
+        - name: mysql
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
