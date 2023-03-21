@@ -8,11 +8,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/stormxio/test-repo.git
+    repoURL: https://github.com/rYz-DevOps/rYz-DevOps.git
     targetRevision: argocd-test
     directory:
       recurse: true
-    path: argocd/deployed-apps/
+    path: argocd/child-app/
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
