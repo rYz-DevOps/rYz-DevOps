@@ -22,14 +22,4 @@ spec:
       prune: true
     syncOptions:
     - Validate=true
-  syncPeriod: 1m
-  orphanedResources: ignore
-  healthCheck:
-    readiness:
-      path: /health
-      initialDelaySeconds: 10
-      timeoutSeconds: 5
-    liveness:
-      path: /health
-      initialDelaySeconds: 20
-      timeoutSeconds: 5
+  
