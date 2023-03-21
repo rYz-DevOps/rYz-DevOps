@@ -71,8 +71,6 @@ spec:
               key: password
         - name: WORDPRESS_DB_NAME
           value: wordpress
-      imagePullSecrets:
-        - name: regcred
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -92,7 +90,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:5.7
+        image: mysql:latest
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
@@ -110,8 +108,6 @@ spec:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
-      imagePullSecrets:
-        - name: regcred
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
