@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/rYz-DevOps/rYz-DevOps.git
-    targetRevision: argocd-test
+    targetRevision: argocd
     directory:
       recurse: true
     path: argocd/child-app/
