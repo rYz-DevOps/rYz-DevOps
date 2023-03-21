@@ -6,10 +6,10 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: test-dev
+  project:
   source:
-    repoURL: https://github.com/stormxio/test-repo.git
-    targetRevision: argocd-test
+    repoURL: https://github.com/rYz-DevOps/rYz-DevOps.git
+    targetRevision: argocd
     directory:
       recurse: true
     path: argocd/deployments/nginx/
