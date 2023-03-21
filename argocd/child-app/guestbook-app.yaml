@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: test-dev
+  source:
+    repoURL: https://github.com/rYz-DevOps/rYz-DevOps.git
+    targetRevision: argocd
+    directory:
+      recurse: true
+    path: argocd/deployments/guestbook/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: guestbook
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - Validate=true
+  syncPeriod: 1m
+  orphanedResources: ignore
+  healthCheck:
+    readiness:
+      path: /health
+      initialDelaySeconds: 10
+      timeoutSeconds: 5
+    liveness:
+      path: /health
+      initialDelaySeconds: 20
+      timeoutSeconds: 5
